@@ -1,0 +1,12 @@
+<div class="container d-flex">
+    <!-- <div class="card" *ngFor="let sw of shows" style="width: 18rem;"> -->
+        <div class="card" [ngStyle]="{'background-color': backgroundColor}">
+        <img class="card-img-top" [src]="show.image" alt="Card image cap">
+        <div class="card-body">
+            <p (click)="delete(show.name)"style="float:right; cursor:pointer;" >x</p>
+            <h5 class="card-title">{{show.name}}</h5>
+            <p class="card-text">{{show.description}}</p>
+            <button href="#"  class="btn btn-primary" (click)="selectBoton()"></button>
+        </div>
+    </div>
+</div>

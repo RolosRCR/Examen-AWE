@@ -1,22 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
-import { ShowsComponent } from './components/shows/shows.component';
-import { Show } from './interfases/show.interface';
-import { FormsModule, NgForm } from '@angular/forms';
-
-@Component({
-    selector: 'app-root',
-    standalone: true,
-    imports: [RouterOutlet, NgFor, ShowsComponent, FormsModule, NgIf],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css'
-})
-export class AppComponent {
-    public search: string = "";
-    public descrip: string = "";
-    public img: string = "https://es.mypet.com/wp-content/uploads/sites/23/2021/03/GettyImages-546792138-e1582816021300.jpg?w=700";
-    public shows: Show[] = [
+[
         {
             "name": "Breaking Bad",
             "year": 2008,
@@ -98,7 +80,13 @@ export class AppComponent {
             "genre": "Ciencia Ficción",
             "likes": []
         },
-
+        {
+            "episodes": 36,
+            "image": "https://m.media-amazon.com/images/I/81V2yYyPA2L._AC_UF894,1000_QL80_.jpg",
+            "description": "Un parque temático futurista donde los visitantes interactúan con androides que comienzan a cuestionar su existencia.",
+            "genre": "Ciencia Ficción",
+            "likes": []
+        },
         {
             "name": "Rick and Morty",
             "year": 2013,
@@ -162,44 +150,4 @@ export class AppComponent {
             "genre": "Comedia",
             "likes": []
         }
-    ];
-
-    public selectShow: Show | null = null;
-
-    public select(form: NgForm): void {
-        if (form.valid && this.selectedShow != null) {
-            const ind = this.shows.findIndex(s => s.name === this.selectedShow?.name);
-            if (ind !== -1) {
-                this.shows[ind] = { ...this.shows[ind] };
-                this.selectedShow = null;
-            }
-        }
-    }
-    public deleteData(name: string): void {
-        
-    }
-
-    public createData(form: NgForm): void {
-        if (form.valid) {
-            const newShow: Show = {
-                name: form.value.name,
-                year: 0,
-                episodes: 0,
-                image: form.value.image,
-                description: form.value.description,
-                genre: "",
-                likes: []
-            };
-            this.shows.push(newShow);
-            form.resetForm();
-            console.log("Nuevo show agregado:", newShow);
-        } else {
-            console.log("Error: faltan datos");
-        }
-    }
-
-    public selectedShow: Show | null = null;
-
-
-
-}
+    ]
